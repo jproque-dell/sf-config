@@ -36,6 +36,8 @@ zookeeper_components:
       --gidmap 0:4000:999
       --uidmap {{ container_uid }}:{{ zookeeper_uid | default(1000) }}:1
       --gidmap {{ container_gid }}:{{ zookeeper_gid | default(1000) }}:1
+      --volume {{ zookeeper_lib_dir }}/data:/data:Z
+      --volume {{ zookeeper_lib_dir }}/datalog:/datalog:Z
       --volume {{ zookeeper_config_dir }}/zoo.cfg:/conf/zoo.cfg:Z
       --volume {{ zookeeper_config_dir }}/zk-ca.pem:/conf/zk-ca.pem:Z
       --volume {{ zookeeper_config_dir }}/server.pem:/conf/server.pem:Z
